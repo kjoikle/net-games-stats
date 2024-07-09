@@ -1,0 +1,16 @@
+{
+  "connections": [
+    {
+      "id": 1,
+      "puzzleNumber": 1,
+      "grid": ["🟨🟨🟨🟨", "🟩🟩🟩🟩", "🟦🟦🟦🟦", "🟪🟪🟪🟪"],
+      "mistakes": 0,
+      "solved": true,
+      "yellow_solved": 0,
+      "green_solved": 1,
+      "blue_solved": 2,
+      "purple_solved": 3,
+      "solve_order": ["🟨🟨🟨🟨", "🟩🟩🟩🟩", "🟦🟦🟦🟦", "🟪🟪🟪🟪"]
+    }
+  ]
+}

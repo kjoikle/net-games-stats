@@ -1,5 +1,7 @@
+import HomeDashboard from "./pages/HomeDashboard";
+
 function App() {
-  return <div>App</div>;
+  return <HomeDashboard />;
 }
 
 export default App;
