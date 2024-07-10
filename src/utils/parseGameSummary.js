@@ -8,6 +8,8 @@ export const parseGame = (input) => {
     alert("Enter valid game results!");
   } else if (gameName === "Connections") {
     return parseConnectionsGame(cleanInput);
+  } else if (gameName === "Strands") {
+    return parseStrandsGame(cleanInput);
   } else {
     alert("We don't yet support this game :(");
   }
@@ -24,45 +26,80 @@ const isValidGame = (input) => {
   return true;
 };
 
-// parse input for relevant connections game info and return object
-// input = cleaned data
-const parseConnectionsGame = (input) => {
-  const puzzleNumber = input[1].split(" ")[1].slice(1); // need to think about what type this should be / what am i going to do with it
-  const grid = input.slice(2);
-  const mistakes = grid.length - 4;
-  const solved = mistakes < 4;
-  let yellow_solved = null;
-  let green_solved = null;
-  let blue_solved = null;
-  let purple_solved = null;
-  let solve_order = null;
+const parseStrandsGame = (input) => {
+  const puzzleNumber = input[0].split(" ")[1].slice(1);
+  const rawGameBoard = input.slice(2);
+  let gameBoard = [];
+  let hintsUsed = 0;
+  let indexOfSpangram = -1;
 
-  if (solved) {
-    solve_order = grid.filter((row) => {
-      return (
-        row === "🟨🟨🟨🟨" ||
-        row === "🟩🟩🟩🟩" ||
-        row === "🟦🟦🟦🟦" ||
-        row === "🟪🟪🟪🟪"
-      );
-    });
-    yellow_solved = solve_order.indexOf("🟨🟨🟨🟨");
-    green_solved = solve_order.indexOf("🟩🟩🟩🟩");
-    blue_solved = solve_order.indexOf("🟦🟦🟦🟦");
-    purple_solved = solve_order.indexOf("🟪🟪🟪🟪");
-  }
+  rawGameBoard.forEach((line) => {
+    gameBoard = gameBoard.concat(line);
+  });
+  gameBoard = gameBoard.join("");
+  gameBoard = [...gameBoard]; // gameBoard is an array of the game emojis
+
+  gameBoard.forEach((value, index) => {
+    if (value === "💡") {
+      hintsUsed++;
+    } else if (value === "🟡") {
+      indexOfSpangram = index;
+    }
+  });
 
   const newGameObject = {
+    id: Number(puzzleNumber),
+    puzzleNumber: puzzleNumber,
+    gameBoard: gameBoard,
+    hintsUsed: hintsUsed,
+    indexOfSpangram: indexOfSpangram, // zero indexed
+  };
+
+  console.log(newGameObject);
+
+  return ["strands", newGameObject];
+};
+
+// parse input for relevant connections game info and return object
+const parseConnectionsGame = (input) => {
+  const puzzleNumber = input[1].split(" ")[1].slice(1);
+  const grid = input.slice(2);
+  let yellowSolved = null;
+  let greenSolved = null;
+  let blueSolved = null;
+  let purpleSolved = null;
+  let solveOrder = null;
+
+  solveOrder = grid.filter((row) => {
+    return (
+      row === "🟨🟨🟨🟨" ||
+      row === "🟩🟩🟩🟩" ||
+      row === "🟦🟦🟦🟦" ||
+      row === "🟪🟪🟪🟪"
+    );
+  });
+  yellowSolved = solveOrder.indexOf("🟨🟨🟨🟨");
+  greenSolved = solveOrder.indexOf("🟩🟩🟩🟩");
+  blueSolved = solveOrder.indexOf("🟦🟦🟦🟦");
+  purpleSolved = solveOrder.indexOf("🟪🟪🟪🟪");
+
+  const mistakes = grid.length - solveOrder.length;
+  const solved = mistakes < 4;
+
+  const newGameObject = {
+    id: Number(puzzleNumber),
     puzzleNumber: puzzleNumber,
     grid: grid,
     mistakes: mistakes,
     solved: solved,
-    yellow_solved: yellow_solved,
-    green_solved: green_solved,
-    blue_solved: blue_solved,
-    purple_solved: purple_solved,
-    solve_order: solve_order,
+    yellowSolved: yellowSolved,
+    greenSolved: greenSolved,
+    blueSolved: blueSolved,
+    purpleSolved: purpleSolved,
+    solveOrder: solveOrder,
   };
 
-  return newGameObject;
+  currentIndex++;
+
+  return ["connections", newGameObject];
 };

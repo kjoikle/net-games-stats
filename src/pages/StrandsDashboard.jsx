@@ -1,8 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import api from "../services/api";
 
 function StrandsDashboard() {
-  // display strands history
-  return <div>StrandsDashboard</div>;
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Fetch data when the component mounts
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await api.get("/strands");
+        setData(response.data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <>
+      <h2>Strands History</h2>
+      {loading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
+      {data &&
+        data.map((game, index) => {
+          return <p key={index}>{game.gameBoard}</p>;
+        })}
+    </>
+  );
 }
 
 export default StrandsDashboard;

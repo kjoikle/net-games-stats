@@ -1,12 +1,29 @@
 import { useState } from "react";
+import api from "../services/api";
 import { parseGame } from "../utils/parseGameSummary";
 
 function GameInput() {
   const [gameInput, setGameInput] = useState("");
 
+  async function addToDB(gameType, gameObject) {
+    try {
+      await api.post(gameType, gameObject);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   function handleFormSubmit(e) {
     e.preventDefault();
-    console.log(parseGame(gameInput));
+
+    parseGame(gameInput);
+
+    const gameData = parseGame(gameInput); // [gameType, gameObject]
+
+    if (gameData[0] === "connections" || gameData[0] === "strands") {
+      addToDB(gameData[0], gameData[1]);
+    }
+
     setGameInput("");
   }
 

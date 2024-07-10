@@ -1,16 +1,159 @@
 {
   "connections": [
     {
-      "id": 1,
+      "id": "1",
       "puzzleNumber": 1,
-      "grid": ["🟨🟨🟨🟨", "🟩🟩🟩🟩", "🟦🟦🟦🟦", "🟪🟪🟪🟪"],
+      "grid": [
+        "🟨🟨🟨🟨",
+        "🟩🟩🟩🟩",
+        "🟦🟦🟦🟦",
+        "🟪🟪🟪🟪"
+      ],
       "mistakes": 0,
       "solved": true,
       "yellow_solved": 0,
       "green_solved": 1,
       "blue_solved": 2,
       "purple_solved": 3,
-      "solve_order": ["🟨🟨🟨🟨", "🟩🟩🟩🟩", "🟦🟦🟦🟦", "🟪🟪🟪🟪"]
+      "solve_order": [
+        "🟨🟨🟨🟨",
+        "🟩🟩🟩🟩",
+        "🟦🟦🟦🟦",
+        "🟪🟪🟪🟪"
+      ]
+    },
+    {
+      "id": "2",
+      "puzzleNumber": 394,
+      "grid": [
+        "🟨🟨🟨🟨",
+        "🟦🟦🟦🟦",
+        "🟪🟩🟩🟩",
+        "🟩🟩🟩🟪",
+        "🟪🟪🟩🟪",
+        "🟪🟪🟪🟪",
+        "🟩🟩🟩🟩"
+      ],
+      "mistakes": 3,
+      "solved": true,
+      "yellow_solved": 0,
+      "green_solved": 3,
+      "blue_solved": 1,
+      "purple_solved": 2,
+      "solve_order": [
+        "🟨🟨🟨🟨",
+        "🟦🟦🟦🟦",
+        "🟪🟪🟪🟪",
+        "🟩🟩🟩🟩"
+      ]
+    },
+    {
+      "id": "2",
+      "puzzleNumber": "392",
+      "grid": [
+        "🟩🟩🟩🟩",
+        "🟨🟦🟨🟨",
+        "🟦🟨🟨🟨",
+        "🟨🟨🟨🟨",
+        "🟦🟪🟪🟦",
+        "🟦🟪🟦🟦"
+      ],
+      "mistakes": 4,
+      "solved": false,
+      "yellow_solved": 1,
+      "green_solved": 0,
+      "blue_solved": -1,
+      "purple_solved": -1,
+      "solve_order": [
+        "🟩🟩🟩🟩",
+        "🟨🟨🟨🟨"
+      ]
+    },
+    {
+      "id": "395",
+      "puzzleNumber": "395",
+      "grid": [
+        "🟨🟩🟨🟨",
+        "🟨🟨🟨🟨",
+        "🟩🟩🟩🟩",
+        "🟦🟦🟦🟦",
+        "🟪🟪🟪🟪"
+      ],
+      "mistakes": 1,
+      "solved": true,
+      "yellow_solved": 0,
+      "green_solved": 1,
+      "blue_solved": 2,
+      "purple_solved": 3,
+      "solve_order": [
+        "🟨🟨🟨🟨",
+        "🟩🟩🟩🟩",
+        "🟦🟦🟦🟦",
+        "🟪🟪🟪🟪"
+      ]
+    },
+    {
+      "id": 395,
+      "puzzleNumber": "395",
+      "grid": [
+        "🟨🟩🟨🟨",
+        "🟨🟨🟨🟨",
+        "🟩🟩🟩🟩",
+        "🟦🟦🟦🟦",
+        "🟪🟪🟪🟪"
+      ],
+      "mistakes": 1,
+      "solved": true,
+      "yellow_solved": 0,
+      "green_solved": 1,
+      "blue_solved": 2,
+      "purple_solved": 3,
+      "solve_order": [
+        "🟨🟨🟨🟨",
+        "🟩🟩🟩🟩",
+        "🟦🟦🟦🟦",
+        "🟪🟪🟪🟪"
+      ]
+    },
+    {
+      "id": 395,
+      "puzzleNumber": "395",
+      "grid": [
+        "🟨🟩🟨🟨",
+        "🟨🟨🟨🟨",
+        "🟩🟩🟩🟩",
+        "🟦🟦🟦🟦",
+        "🟪🟪🟪🟪"
+      ],
+      "mistakes": 1,
+      "solved": true,
+      "yellow_solved": 0,
+      "green_solved": 1,
+      "blue_solved": 2,
+      "purple_solved": 3,
+      "solve_order": [
+        "🟨🟨🟨🟨",
+        "🟩🟩🟩🟩",
+        "🟦🟦🟦🟦",
+        "🟪🟪🟪🟪"
+      ]
+    }
+  ],
+  "strands": [
+    {
+      "id": 128,
+      "puzzleNumber": "128",
+      "gameBoard": [
+        "💡",
+        "🔵",
+        "🔵",
+        "🔵",
+        "🟡",
+        "🔵",
+        "🔵"
+      ],
+      "hintsUsed": 1,
+      "indexOfSpangram": 4
     }
   ]
 }
