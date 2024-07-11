@@ -1,20 +1,19 @@
-import { Link } from "react-router-dom";
 import GameInput from "../components/GameInput";
-import DashboardButton from "../components/DashboardButton";
+import HubGameCard from "../components/HubGameCard";
 
 function HomeDashboard() {
   return (
-    <>
-      <h1>Your NYT Games Dashboard</h1>
-      <GameInput />
+    <div className="homeWrapper">
+      <div className="homeHeader">
+        <h1 className="bevan">Your NYT Games Dashboard</h1>
+        <GameInput />
+      </div>
 
-      <Link to="/connections">
-        <DashboardButton name="Connections" />
-      </Link>
-      <Link to="/strands">
-        <DashboardButton name="Strands" />
-      </Link>
-    </>
+      <div className="homeBody">
+        <HubGameCard gameName="Connections" path="/connections" />
+        <HubGameCard gameName="Strands" path="/strands" />
+      </div>
+    </div>
   );
 }
 

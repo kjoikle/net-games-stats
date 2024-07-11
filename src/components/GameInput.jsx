@@ -32,7 +32,7 @@ function GameInput() {
   }
 
   return (
-    <>
+    <div className="inputBox">
       <form onSubmit={handleFormSubmit}>
         <textarea
           value={gameInput}
@@ -41,7 +41,7 @@ function GameInput() {
         />
         <button type="submit">Submit</button>
       </form>
-    </>
+    </div>
   );
 }
 

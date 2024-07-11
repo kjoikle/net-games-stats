@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import api from "../services/api";
+import ConnectionsGameCard from "../components/ConnectionsGameCard";
 
 function ConnectionsDashboard() {
   const [data, setData] = useState([]);
@@ -23,42 +24,29 @@ function ConnectionsDashboard() {
     fetchData();
   }, []);
 
-  function getTotalGamesInfo() {
-    // look into what is the proper way to display this; do i maintain a variable? there is def a better way than i currently have it since calling function 3x
-    const puzzlesPlayed = data.length;
-    let puzzlesSolved = 0;
-
-    data.forEach((game) => {
-      if (game.solved) {
-        puzzlesSolved++;
-      }
-    });
-
-    const solveRate = puzzlesSolved / puzzlesPlayed; // want to round this to like 2 decimals and put '%' at end
-
-    return {
-      puzzlesPlayed: puzzlesPlayed,
-      puzzlesSolved: puzzlesSolved,
-      solveRate: solveRate,
-    };
-  }
+  const puzzlesPlayed = data.length;
+  const puzzlesSolved = data.filter((game) => game.solved).length;
+  const solveRate =
+    puzzlesPlayed > 0
+      ? `${Math.round((puzzlesSolved / puzzlesPlayed) * 100)}%`
+      : "0%";
 
   // want a way to maintain streak -- can either use datetime (maybe more advanced when limiting submissions to one per day)
   // or can just track by puzzle number
 
   return (
     <>
-      <h2>Connections History</h2>
+      <h2 className="bevan">Connections History</h2>
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       {data && (
-        <div>
-          <h3>Games Played: {getTotalGamesInfo().puzzlesPlayed}</h3>
-          <h3>Games Solved: {getTotalGamesInfo().puzzlesSolved}</h3>
-          <h3>Solve Rate: {getTotalGamesInfo().solveRate}</h3>
+        <div className="lora">
+          <p>Games Played: {puzzlesPlayed}</p>
+          <p>Games Solved: {puzzlesSolved}</p>
+          <p>Solve Rate: {solveRate}</p>
 
           {data.map((game, index) => {
-            return <p key={index}>{game.grid}</p>;
+            return <ConnectionsGameCard game={game} />;
           })}
         </div>
       )}

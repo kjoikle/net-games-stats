@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../services/api";
+import StrandsGameCard from "../components/StrandsGameCard";
 
 function StrandsDashboard() {
   const [data, setData] = useState([]);
@@ -23,15 +24,31 @@ function StrandsDashboard() {
     fetchData();
   }, []);
 
+  const puzzlesPlayed = data.length;
+  const totalHintsUsed = data.reduce(
+    (accumulator, currentValue) => accumulator + currentValue.hintsUsed,
+    0
+  );
+  const hintsPerGame =
+    puzzlesPlayed > 0
+      ? Math.round((totalHintsUsed / puzzlesPlayed) * 100) / 100
+      : 0;
+
   return (
     <>
-      <h2>Strands History</h2>
+      <h2 className="bevan">Strands History</h2>
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      {data &&
-        data.map((game, index) => {
-          return <p key={index}>{game.gameBoard}</p>;
-        })}
+      {data && (
+        <div className="lora">
+          <p>Games Played: {puzzlesPlayed}</p>
+          <p>Hints Per Game: {hintsPerGame}</p>
+
+          {data.map((game, index) => {
+            return <StrandsGameCard game={game} />;
+          })}
+        </div>
+      )}
     </>
   );
 }
