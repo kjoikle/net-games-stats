@@ -3,7 +3,7 @@ import HubGameCard from "../components/HubGameCard";
 
 function HomeDashboard() {
   return (
-    <div className="homeWrapper">
+    <div className="dashboardWrapper">
       <div className="homeHeader">
         <h1 className="bevan">Your NYT Games Dashboard</h1>
         <GameInput />

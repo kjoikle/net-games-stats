@@ -4,11 +4,11 @@ function ConnectionsGameCard({ game }) {
   return (
     <div className="gameCard">
       <h4>Puzzle #{game.puzzleNumber}</h4>
-      <h4>
+      <p>
         {game.grid.map((line) => (
-          <p>{line}</p>
+          <p className="connectionsGridLine">{line}</p>
         ))}
-      </h4>
+      </p>
     </div>
   );
 }

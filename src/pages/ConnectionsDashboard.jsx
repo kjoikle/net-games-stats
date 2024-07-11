@@ -35,22 +35,26 @@ function ConnectionsDashboard() {
   // or can just track by puzzle number
 
   return (
-    <>
+    <div className="dashboardWrapper">
       <h2 className="bevan">Connections History</h2>
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       {data && (
         <div className="lora">
-          <p>Games Played: {puzzlesPlayed}</p>
-          <p>Games Solved: {puzzlesSolved}</p>
-          <p>Solve Rate: {solveRate}</p>
+          <div className="dashboardStats">
+            <p>Games Played: {puzzlesPlayed}</p>
+            <p>Games Solved: {puzzlesSolved}</p>
+            <p>Solve Rate: {solveRate}</p>
+          </div>
 
-          {data.map((game, index) => {
-            return <ConnectionsGameCard game={game} />;
-          })}
+          <div className="dashboardHistory">
+            {data.map((game, index) => {
+              return <ConnectionsGameCard game={game} />;
+            })}
+          </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

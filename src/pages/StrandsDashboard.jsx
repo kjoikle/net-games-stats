@@ -35,21 +35,25 @@ function StrandsDashboard() {
       : 0;
 
   return (
-    <>
+    <div className="dashboardWrapper">
       <h2 className="bevan">Strands History</h2>
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       {data && (
         <div className="lora">
-          <p>Games Played: {puzzlesPlayed}</p>
-          <p>Hints Per Game: {hintsPerGame}</p>
+          <div className="dashboardStats">
+            <p>Games Played: {puzzlesPlayed}</p>
+            <p>Hints Per Game: {hintsPerGame}</p>
+          </div>
 
-          {data.map((game, index) => {
-            return <StrandsGameCard game={game} />;
-          })}
+          <div className="dashboardHistory">
+            {data.map((game, index) => {
+              return <StrandsGameCard game={game} />;
+            })}
+          </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 
