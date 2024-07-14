@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import api from "../services/api";
 import StrandsGameCard from "../components/StrandsGameCard";
+import { averageScore } from "../utils/parseGameSummary";
 
 function StrandsDashboard() {
   const [data, setData] = useState([]);
@@ -34,6 +35,8 @@ function StrandsDashboard() {
       ? Math.round((totalHintsUsed / puzzlesPlayed) * 100) / 100
       : 0;
 
+  const avgScore = averageScore(data);
+
   return (
     <div className="dashboardWrapper">
       <h2 className="bevan">Strands History</h2>
@@ -44,11 +47,12 @@ function StrandsDashboard() {
           <div className="dashboardStats">
             <p>Games Played: {puzzlesPlayed}</p>
             <p>Hints Per Game: {hintsPerGame}</p>
+            <p>Average Score: {avgScore}</p>
           </div>
 
           <div className="dashboardHistory">
             {data.map((game, index) => {
-              return <StrandsGameCard game={game} />;
+              return <StrandsGameCard key={index} game={game} />;
             })}
           </div>
         </div>

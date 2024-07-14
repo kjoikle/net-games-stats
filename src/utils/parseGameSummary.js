@@ -1,29 +1,105 @@
 // calls relevant parse function based on game type of input
 export const parseGame = (input) => {
   const cleanInput = cleanGameInput(input);
-  const valid = isValidGame(input);
   const gameName = cleanInput[0].split(" ")[0];
+  const valid = isValidGame(cleanInput, gameName);
 
   if (!valid) {
     alert("Enter valid game results!");
+    return false;
   } else if (gameName === "Connections") {
     return parseConnectionsGame(cleanInput);
   } else if (gameName === "Strands") {
     return parseStrandsGame(cleanInput);
-  } else {
-    alert("We don't yet support this game :(");
   }
 };
 
-// cleans up input
+export function averageScore(data) {
+  let totalScore = 0;
+  data.forEach((game) => {
+    totalScore += game.score;
+  });
+  const avgScore = data.length > 0 ? totalScore / data.length : 0;
+  return avgScore;
+}
+
+// returns input in an array of lines with whitespace before and after removed
 const cleanGameInput = (input) => {
-  const cleanInput = input.split("\n"); // clean empty rows and extra spaces
+  const cleanInput = input.trim().split("\n");
   return cleanInput;
 };
 
-// validates game input NEED TO IMPLEMENT
-const isValidGame = (input) => {
+function getCurrentDate() {
+  const date = new Date();
+
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+
+  return `${month}-${day}-${year}`;
+}
+
+function validateConnectionsGrid(grid) {
+  const rows = grid.slice(2);
+  const validChars = ["🟨", "🟦", "🟪", "🟩"];
+
+  if (rows.length < 4 || rows.length > 7) {
+    return false;
+  }
+
+  for (const row of rows) {
+    // Remove any leading or trailing whitespace
+    const trimmedRow = row.trim();
+
+    // Check if the row has 4 columns
+
+    const emojiRow = [...trimmedRow];
+    if (emojiRow.length !== 4) {
+      return false;
+    }
+
+    // Check each character in the row
+    for (const char of trimmedRow) {
+      if (!validChars.includes(char)) {
+        return false;
+      }
+    }
+  }
+
   return true;
+}
+
+function validateStrandsGrid(grid) {
+  const rows = grid.slice(2);
+  const validChars = ["🟡", "💡", "🔵"];
+
+  for (const row of rows) {
+    // Remove any leading or trailing whitespace
+    const trimmedRow = row.trim();
+
+    // Check each character in the row
+    for (const char of trimmedRow) {
+      if (!validChars.includes(char)) {
+        return false;
+      }
+    }
+  }
+
+  return true;
+}
+
+const isValidGame = (input, gameName) => {
+  if (input.length == 0) {
+    return false;
+  }
+
+  if (gameName === "Connections") {
+    return validateConnectionsGrid(input);
+  } else if (gameName === "Strands") {
+    return validateStrandsGrid(input);
+  }
+
+  return false;
 };
 
 const parseStrandsGame = (input) => {
@@ -43,19 +119,21 @@ const parseStrandsGame = (input) => {
     if (value === "💡") {
       hintsUsed++;
     } else if (value === "🟡") {
-      indexOfSpangram = index;
+      indexOfSpangram = index - hintsUsed;
     }
   });
 
+  const score = 100 - 15 * hintsUsed;
+
   const newGameObject = {
     id: Number(puzzleNumber),
+    date: getCurrentDate(),
     puzzleNumber: puzzleNumber,
+    score: score,
     gameBoard: gameBoard,
     hintsUsed: hintsUsed,
     indexOfSpangram: indexOfSpangram, // zero indexed
   };
-
-  console.log(newGameObject);
 
   return ["strands", newGameObject];
 };
@@ -86,9 +164,19 @@ const parseConnectionsGame = (input) => {
   const mistakes = grid.length - solveOrder.length;
   const solved = mistakes < 4;
 
+  let score = 100;
+  if (solved) {
+    score -= mistakes * 10;
+  } else {
+    score = 20;
+    score += solveOrder.length * 15;
+  }
+
   const newGameObject = {
     id: Number(puzzleNumber),
+    date: getCurrentDate(),
     puzzleNumber: puzzleNumber,
+    score: score,
     grid: grid,
     mistakes: mistakes,
     solved: solved,
@@ -98,8 +186,6 @@ const parseConnectionsGame = (input) => {
     purpleSolved: purpleSolved,
     solveOrder: solveOrder,
   };
-
-  currentIndex++;
 
   return ["connections", newGameObject];
 };

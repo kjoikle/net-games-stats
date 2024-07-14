@@ -20,7 +20,10 @@ function GameInput() {
 
     const gameData = parseGame(gameInput); // [gameType, gameObject]
 
-    if (gameData[0] === "connections" || gameData[0] === "strands") {
+    if (
+      (gameData && gameData[0] === "connections") ||
+      gameData[0] === "strands"
+    ) {
       addToDB(gameData[0], gameData[1]);
     }
 

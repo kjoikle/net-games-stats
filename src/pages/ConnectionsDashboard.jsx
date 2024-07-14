@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import api from "../services/api";
 import ConnectionsGameCard from "../components/ConnectionsGameCard";
+import { averageScore } from "../utils/parseGameSummary";
 
 function ConnectionsDashboard() {
   const [data, setData] = useState([]);
@@ -30,6 +31,7 @@ function ConnectionsDashboard() {
     puzzlesPlayed > 0
       ? `${Math.round((puzzlesSolved / puzzlesPlayed) * 100)}%`
       : "0%";
+  const avgScore = averageScore(data);
 
   // want a way to maintain streak -- can either use datetime (maybe more advanced when limiting submissions to one per day)
   // or can just track by puzzle number
@@ -45,11 +47,12 @@ function ConnectionsDashboard() {
             <p>Games Played: {puzzlesPlayed}</p>
             <p>Games Solved: {puzzlesSolved}</p>
             <p>Solve Rate: {solveRate}</p>
+            <p>Average Score: {avgScore}</p>
           </div>
 
           <div className="dashboardHistory">
             {data.map((game, index) => {
-              return <ConnectionsGameCard game={game} />;
+              return <ConnectionsGameCard key={index} game={game} />;
             })}
           </div>
         </div>

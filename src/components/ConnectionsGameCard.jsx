@@ -4,6 +4,7 @@ function ConnectionsGameCard({ game }) {
   return (
     <div className="gameCard">
       <h4>Puzzle #{game.puzzleNumber}</h4>
+      <h5>Score: {game.score}</h5>
       <p>
         {game.grid.map((line) => (
           <p className="connectionsGridLine">{line}</p>
