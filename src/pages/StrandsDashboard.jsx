@@ -1,29 +1,17 @@
-import React, { useEffect, useState } from "react";
-import api from "../services/api";
+import React from "react";
 import StrandsGameCard from "../components/StrandsGameCard";
 import { averageScore } from "../utils/parseGameSummary";
+import { useQuery } from "@tanstack/react-query";
+import { fetchStrandsData } from "../utils/queryFunctions";
 
 function StrandsDashboard() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { data, error, isLoading } = useQuery({
+    queryKey: ["strands"],
+    queryFn: fetchStrandsData,
+  });
 
-  // Fetch data when the component mounts
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const response = await api.get("/strands");
-        setData(response.data);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   const puzzlesPlayed = data.length;
   const totalHintsUsed = data.reduce(
@@ -40,23 +28,20 @@ function StrandsDashboard() {
   return (
     <div className="dashboardWrapper">
       <h2 className="bevan">Strands History</h2>
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      {data && (
-        <div className="lora">
-          <div className="dashboardStats">
-            <p>Games Played: {puzzlesPlayed}</p>
-            <p>Hints Per Game: {hintsPerGame}</p>
-            <p>Average Score: {avgScore}</p>
-          </div>
 
-          <div className="dashboardHistory">
-            {data.map((game, index) => {
-              return <StrandsGameCard key={index} game={game} />;
-            })}
-          </div>
+      <div className="lora">
+        <div className="dashboardStats">
+          <p>Games Played: {puzzlesPlayed}</p>
+          <p>Hints Per Game: {hintsPerGame}</p>
+          <p>Average Score: {avgScore}</p>
         </div>
-      )}
+
+        <div className="dashboardHistory">
+          {data.map((game, index) => {
+            return <StrandsGameCard key={index} game={game} />;
+          })}
+        </div>
+      </div>
     </div>
   );
 }

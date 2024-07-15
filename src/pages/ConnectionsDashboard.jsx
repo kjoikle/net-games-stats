@@ -1,29 +1,17 @@
-import React, { useState, useEffect } from "react";
-import api from "../services/api";
+import React from "react";
 import ConnectionsGameCard from "../components/ConnectionsGameCard";
 import { averageScore } from "../utils/parseGameSummary";
+import { useQuery } from "@tanstack/react-query";
+import { fetchConnectionsData } from "../utils/queryFunctions";
 
 function ConnectionsDashboard() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { data, error, isLoading } = useQuery({
+    queryKey: ["connections"],
+    queryFn: fetchConnectionsData,
+  });
 
-  // Fetch data when the component mounts
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const response = await api.get("/connections");
-        setData(response.data);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   const puzzlesPlayed = data.length;
   const puzzlesSolved = data.filter((game) => game.solved).length;
@@ -39,24 +27,20 @@ function ConnectionsDashboard() {
   return (
     <div className="dashboardWrapper">
       <h2 className="bevan">Connections History</h2>
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      {data && (
-        <div className="lora">
-          <div className="dashboardStats">
-            <p>Games Played: {puzzlesPlayed}</p>
-            <p>Games Solved: {puzzlesSolved}</p>
-            <p>Solve Rate: {solveRate}</p>
-            <p>Average Score: {avgScore}</p>
-          </div>
-
-          <div className="dashboardHistory">
-            {data.map((game, index) => {
-              return <ConnectionsGameCard key={index} game={game} />;
-            })}
-          </div>
+      <div className="lora">
+        <div className="dashboardStats">
+          <p>Games Played: {puzzlesPlayed}</p>
+          <p>Games Solved: {puzzlesSolved}</p>
+          <p>Solve Rate: {solveRate}</p>
+          <p>Average Score: {avgScore}</p>
         </div>
-      )}
+
+        <div className="dashboardHistory">
+          {data.map((game, index) => {
+            return <ConnectionsGameCard key={index} game={game} />;
+          })}
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 {
   "connections": [
     {
-      "id": 399,
+      "id": "399",
       "date": "7-14-2024",
       "puzzleNumber": "399",
       "score": 100,
@@ -25,7 +25,7 @@
       ]
     },
     {
-      "id": 399,
+      "id": "399",
       "date": "7-14-2024",
       "puzzleNumber": "399",
       "score": 80,
@@ -48,6 +48,55 @@
         "🟨🟨🟨🟨",
         "🟪🟪🟪🟪",
         "🟦🟦🟦🟦"
+      ]
+    },
+    {
+      "id": "399",
+      "date": "7-14-2024",
+      "puzzleNumber": "399",
+      "score": 90,
+      "grid": [
+        "🟨🟪🟨🟨",
+        "🟨🟨🟨🟨",
+        "🟩🟩🟩🟩",
+        "🟪🟪🟪🟪",
+        "🟦🟦🟦🟦"
+      ],
+      "mistakes": 1,
+      "solved": true,
+      "yellowSolved": 0,
+      "greenSolved": 1,
+      "blueSolved": 3,
+      "purpleSolved": 2,
+      "solveOrder": [
+        "🟨🟨🟨🟨",
+        "🟩🟩🟩🟩",
+        "🟪🟪🟪🟪",
+        "🟦🟦🟦🟦"
+      ]
+    },
+    {
+      "id": "392",
+      "date": "7-14-2024",
+      "puzzleNumber": "392",
+      "score": 50,
+      "grid": [
+        "🟩🟩🟩🟩",
+        "🟨🟦🟨🟨",
+        "🟦🟨🟨🟨",
+        "🟨🟨🟨🟨",
+        "🟦🟪🟪🟦",
+        "🟦🟪🟦🟦"
+      ],
+      "mistakes": 4,
+      "solved": false,
+      "yellowSolved": 1,
+      "greenSolved": 0,
+      "blueSolved": -1,
+      "purpleSolved": -1,
+      "solveOrder": [
+        "🟩🟩🟩🟩",
+        "🟨🟨🟨🟨"
       ]
     },
     {
@@ -74,35 +123,11 @@
         "🟪🟪🟪🟪",
         "🟦🟦🟦🟦"
       ]
-    },
-    {
-      "id": 392,
-      "date": "7-14-2024",
-      "puzzleNumber": "392",
-      "score": 50,
-      "grid": [
-        "🟩🟩🟩🟩",
-        "🟨🟦🟨🟨",
-        "🟦🟨🟨🟨",
-        "🟨🟨🟨🟨",
-        "🟦🟪🟪🟦",
-        "🟦🟪🟦🟦"
-      ],
-      "mistakes": 4,
-      "solved": false,
-      "yellowSolved": 1,
-      "greenSolved": 0,
-      "blueSolved": -1,
-      "purpleSolved": -1,
-      "solveOrder": [
-        "🟩🟩🟩🟩",
-        "🟨🟨🟨🟨"
-      ]
     }
   ],
   "strands": [
     {
-      "id": 132,
+      "id": "132",
       "date": "7-14-2024",
       "puzzleNumber": "132",
       "score": 100,
@@ -119,7 +144,7 @@
       "indexOfSpangram": 4
     },
     {
-      "id": 133,
+      "id": "133",
       "date": "7-14-2024",
       "puzzleNumber": "133",
       "score": 85,
@@ -139,7 +164,7 @@
       "indexOfSpangram": 4
     },
     {
-      "id": 133,
+      "id": "133",
       "date": "7-14-2024",
       "puzzleNumber": "133",
       "score": 70,

@@ -1,5 +1,6 @@
 import GameInput from "../components/GameInput";
 import HubGameCard from "../components/HubGameCard";
+import UserStats from "../components/UserStats";
 
 function HomeDashboard() {
   return (
@@ -8,6 +9,8 @@ function HomeDashboard() {
         <h1 className="bevan">Your NYT Games Dashboard</h1>
         <GameInput />
       </div>
+
+      <UserStats />
 
       <div className="homeBody">
         <HubGameCard gameName="Connections" path="/connections" />

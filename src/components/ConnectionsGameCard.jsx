@@ -5,11 +5,13 @@ function ConnectionsGameCard({ game }) {
     <div className="gameCard">
       <h4>Puzzle #{game.puzzleNumber}</h4>
       <h5>Score: {game.score}</h5>
-      <p>
-        {game.grid.map((line) => (
-          <p className="connectionsGridLine">{line}</p>
+      <div>
+        {game.grid.map((line, index) => (
+          <p key={index} className="connectionsGridLine">
+            {line}
+          </p>
         ))}
-      </p>
+      </div>
     </div>
   );
 }

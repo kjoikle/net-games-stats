@@ -14,11 +14,18 @@ export const parseGame = (input) => {
   }
 };
 
-export function averageScore(data) {
+export function getTotalScore(data) {
+  if (!data) return 0;
+
   let totalScore = 0;
   data.forEach((game) => {
     totalScore += game.score;
   });
+  return totalScore;
+}
+
+export function averageScore(data) {
+  const totalScore = getTotalScore(data);
   const avgScore = data.length > 0 ? totalScore / data.length : 0;
   return avgScore;
 }
@@ -29,7 +36,7 @@ const cleanGameInput = (input) => {
   return cleanInput;
 };
 
-function getCurrentDate() {
+export function getCurrentDate() {
   const date = new Date();
 
   let day = date.getDate();
