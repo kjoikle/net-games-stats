@@ -7,7 +7,9 @@ export const parseGame = (input) => {
   if (!valid) {
     alert("Enter valid game results!");
     return false;
-  } else if (gameName === "Connections") {
+  }
+
+  if (gameName === "Connections") {
     return parseConnectionsGame(cleanInput);
   } else if (gameName === "Strands") {
     return parseStrandsGame(cleanInput);
