@@ -39,11 +39,7 @@ const cleanGameInput = (input) => {
 export function getCurrentDate() {
   const date = new Date();
 
-  let day = date.getDate();
-  let month = date.getMonth() + 1;
-  let year = date.getFullYear();
-
-  return `${month}-${day}-${year}`;
+  return date.toDateString();
 }
 
 function validateConnectionsGrid(grid) {
@@ -110,7 +106,7 @@ const isValidGame = (input, gameName) => {
 };
 
 const parseStrandsGame = (input) => {
-  const puzzleNumber = input[0].split(" ")[1].slice(1);
+  const puzzleNumber = Number(input[0].split(" ")[1].slice(1));
   const rawGameBoard = input.slice(2);
   let gameBoard = [];
   let hintsUsed = 0;
@@ -132,9 +128,11 @@ const parseStrandsGame = (input) => {
 
   const score = 100 - 15 * hintsUsed;
 
+  const strandsDate = new Date(2024, 2, 3 + puzzleNumber);
+
   const newGameObject = {
     id: Number(puzzleNumber),
-    date: getCurrentDate(),
+    date: strandsDate.toDateString(),
     puzzleNumber: puzzleNumber,
     score: score,
     gameBoard: gameBoard,
@@ -147,7 +145,7 @@ const parseStrandsGame = (input) => {
 
 // parse input for relevant connections game info and return object
 const parseConnectionsGame = (input) => {
-  const puzzleNumber = input[1].split(" ")[1].slice(1);
+  const puzzleNumber = Number(input[1].split(" ")[1].slice(1));
   const grid = input.slice(2);
   let yellowSolved = null;
   let greenSolved = null;
@@ -179,9 +177,11 @@ const parseConnectionsGame = (input) => {
     score += solveOrder.length * 15;
   }
 
+  const connectionsDate = new Date(2023, 5, 11 + puzzleNumber);
+
   const newGameObject = {
     id: Number(puzzleNumber),
-    date: getCurrentDate(),
+    date: connectionsDate.toDateString(),
     puzzleNumber: puzzleNumber,
     score: score,
     grid: grid,

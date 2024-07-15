@@ -2,7 +2,7 @@
   "connections": [
     {
       "id": "399",
-      "date": "7-14-2024",
+      "date": "7-13-2024",
       "puzzleNumber": "399",
       "score": 100,
       "grid": [
@@ -26,7 +26,7 @@
     },
     {
       "id": "399",
-      "date": "7-14-2024",
+      "date": "7-13-2024",
       "puzzleNumber": "399",
       "score": 80,
       "grid": [
@@ -52,7 +52,7 @@
     },
     {
       "id": "399",
-      "date": "7-14-2024",
+      "date": "7-13-2024",
       "puzzleNumber": "399",
       "score": 90,
       "grid": [
@@ -100,7 +100,7 @@
       ]
     },
     {
-      "id": 399,
+      "id": "399",
       "date": "7-14-2024",
       "puzzleNumber": "399",
       "score": 90,
@@ -123,12 +123,87 @@
         "🟪🟪🟪🟪",
         "🟦🟦🟦🟦"
       ]
+    },
+    {
+      "id": 400,
+      "date": "Sun Aug 16 2054",
+      "puzzleNumber": "400",
+      "score": 90,
+      "grid": [
+        "🟨🟨🟨🟨",
+        "🟩🟩🟩🟩",
+        "🟪🟦🟦🟦",
+        "🟦🟦🟦🟦",
+        "🟪🟪🟪🟪"
+      ],
+      "mistakes": 1,
+      "solved": true,
+      "yellowSolved": 0,
+      "greenSolved": 1,
+      "blueSolved": 2,
+      "purpleSolved": 3,
+      "solveOrder": [
+        "🟨🟨🟨🟨",
+        "🟩🟩🟩🟩",
+        "🟦🟦🟦🟦",
+        "🟪🟪🟪🟪"
+      ]
+    },
+    {
+      "id": 400,
+      "date": "Mon Jul 15 2024",
+      "puzzleNumber": "400",
+      "score": 90,
+      "grid": [
+        "🟨🟨🟨🟨",
+        "🟩🟩🟩🟩",
+        "🟪🟦🟦🟦",
+        "🟦🟦🟦🟦",
+        "🟪🟪🟪🟪"
+      ],
+      "mistakes": 1,
+      "solved": true,
+      "yellowSolved": 0,
+      "greenSolved": 1,
+      "blueSolved": 2,
+      "purpleSolved": 3,
+      "solveOrder": [
+        "🟨🟨🟨🟨",
+        "🟩🟩🟩🟩",
+        "🟦🟦🟦🟦",
+        "🟪🟪🟪🟪"
+      ]
+    },
+    {
+      "id": 400,
+      "date": "Mon Jul 15 2024",
+      "puzzleNumber": 400,
+      "score": 90,
+      "grid": [
+        "🟨🟨🟨🟨",
+        "🟩🟩🟩🟩",
+        "🟪🟦🟦🟦",
+        "🟦🟦🟦🟦",
+        "🟪🟪🟪🟪"
+      ],
+      "mistakes": 1,
+      "solved": true,
+      "yellowSolved": 0,
+      "greenSolved": 1,
+      "blueSolved": 2,
+      "purpleSolved": 3,
+      "solveOrder": [
+        "🟨🟨🟨🟨",
+        "🟩🟩🟩🟩",
+        "🟦🟦🟦🟦",
+        "🟪🟪🟪🟪"
+      ]
     }
   ],
   "strands": [
     {
       "id": "132",
-      "date": "7-14-2024",
+      "date": "7-13-2024",
       "puzzleNumber": "132",
       "score": 100,
       "gameBoard": [
@@ -183,6 +258,40 @@
       ],
       "hintsUsed": 2,
       "indexOfSpangram": 1
+    },
+    {
+      "id": 134,
+      "date": "2024-07-15T04:00:00.000Z",
+      "puzzleNumber": 134,
+      "score": 100,
+      "gameBoard": [
+        "🔵",
+        "🔵",
+        "🔵",
+        "🟡",
+        "🔵",
+        "🔵",
+        "🔵"
+      ],
+      "hintsUsed": 0,
+      "indexOfSpangram": 3
+    },
+    {
+      "id": 134,
+      "date": "Mon Jul 15 2024",
+      "puzzleNumber": 134,
+      "score": 100,
+      "gameBoard": [
+        "🔵",
+        "🔵",
+        "🔵",
+        "🟡",
+        "🔵",
+        "🔵",
+        "🔵"
+      ],
+      "hintsUsed": 0,
+      "indexOfSpangram": 3
     }
   ]
 }

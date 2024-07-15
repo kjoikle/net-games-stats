@@ -11,5 +11,3 @@ export async function fetchStrandsData() {
   const resp = await api.get("/strands");
   return resp.data;
 }
-
-export async function fetchTodaysConnectionsData(today) {}
